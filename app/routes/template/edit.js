@@ -13,6 +13,11 @@ export default Route.extend(RouteQueryManager, AuthenticatedRouteMixin, {
     return this.apollo.watchQuery({ query, variables }, resultKey);
   },
 
+  afterModel(model) {
+    if (!model.get('fallback')) model.set('fallback', '');
+    return this._super(...arguments);
+  },
+
   renderTemplate() {
     this.render();
     this.render('template.actions.edit', { outlet: 'actions', into: 'application' });
