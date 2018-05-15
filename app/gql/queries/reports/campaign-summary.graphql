@@ -1,0 +1,33 @@
+query ReportCampaignSummary($input: CampaignHashInput!) {
+	campaignHash(input: $input) {
+    id
+    name
+    description
+    hash
+    advertiser {
+      id
+      name
+			logo
+    }
+    criteria {
+      id
+      placements {
+        id
+        publisher {
+          id
+          logo
+        }
+      }
+    }
+	}
+	reportCampaignSummary(input: $input) {
+		views
+		clicks
+		days {
+			date
+			views
+			clicks
+      ctr
+		}
+	}
+}

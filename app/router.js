@@ -44,6 +44,11 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
+  this.route('reports', { path: '/reports/:hash' }, function() {
+    this.route('creative-breakdown');
+    this.route('campaign');
+  })
+
   this.route('template', function() {
     this.route('create');
     this.route('edit', { path: ':id' });

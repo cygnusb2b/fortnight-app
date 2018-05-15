@@ -28,7 +28,7 @@
 <div class="row">
   <div class="col">
     {{entypo-icon "link"}}
-    <a href="https://materials.fortnight.as3.io/report/{{model.hash}}" target="_blank" rel="noopener noreferrer">Report Link</a>
+    {{#link-to "reports" model.hash}}Report Link{{/link-to}}
   </div>
 </div>
 {{#each model.externalLinks as |link|}}
