@@ -1,0 +1,111 @@
+<div class="container my-3">
+    <div class="row mb-3">
+        <div class="col">
+            <h3 class="mb-0 font-weight-bold text-muted">
+                AD REPORT
+                <span class="h6 text-muted">a summary of real time metrics!</span>
+            </h3>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <span class="h5 font-weight-bold text-uppercase text-danger">
+                        Campaign
+                    </span>
+                    <span class="text-muted">
+                        {{ model.campaignHash.advertiser.name }} | {{moment-format model.campaignHash.criteria.start "MM/DD/YYYY"}}{{#if model.campaignHash.criteria.end}}
+                        - {{moment-format model.campaignHash.criteria.end "MM/DD/YYYY"}}{{/if}} {{#if model.campaignHash.description}}
+                        | {{ model.campaignHash.description }} {{/if}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 col-xs-5">
+                            <div class="icon-100pxh text-center text-info">
+                                {{entypo-icon "eye"}}
+                            </div>
+                        </div>
+                        <div class="col-7 text-right">
+                            <p class="mb-0 text-uppercase">Impressions</p>
+                            <span class="h4 text-info">{{ impressions }}</span>
+
+                        </div>
+                    </div>
+                    <div class="footer text-center text-muted">
+                        <hr>
+                        <small class="text-muted text-uppercase">Displayed Viewable Impressions</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 col-xs-5">
+                            <div class="icon-100pxh text-center text-warning">
+                                {{entypo-icon "direction"}}
+                            </div>
+                        </div>
+                        <div class="col-7 text-right">
+                            <p class="mb-0 text-uppercase">Clicks</p>
+                            <span class="h4 text-warning">{{ clicks }}</span>
+                        </div>
+                    </div>
+                    <div class="footer text-center text-muted">
+                        <hr>
+                        <small class="text-muted text-uppercase">Success of online ads</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 col-xs-5">
+                            <div class="icon-100pxh text-center text-success">
+                                {{entypo-icon "area-graph"}}
+                            </div>
+                        </div>
+                        <div class="col-7 text-right text-uppercase">
+                            <p class="mb-0">CTR</p>
+                            <span class="h4 text-success">{{ ctr }}%</span>
+                        </div>
+                    </div>
+                    <div class="footer text-center text-muted">
+                        <hr>
+                        <small class="text-muted text-uppercase">Click-through rate</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    {{high-charts series=impressionSummary.data options=impressionSummary.options}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    {{high-charts series=ctrSummary.data options=ctrSummary.options}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

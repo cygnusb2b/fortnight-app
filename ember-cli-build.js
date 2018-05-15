@@ -36,6 +36,10 @@ module.exports = function(defaults) {
   app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js');
   app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map', { destDir: 'assets' });
 
+  // High Charts
+  app.import('node_modules/highcharts/highcharts.js');
+  app.import('node_modules/highcharts/modules/exporting.js');
+
   app.import('node_modules/fraction.js/fraction.min.js', {
     using: [
       { transformation: 'amd', as: 'fraction.js' }
