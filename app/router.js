@@ -39,14 +39,26 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
+  this.route('material-collect', { path:'/material-collect/:hash' },  function() {
+    this.route('campaign')
+    this.route('content')
+  })
+
+  this.route('client', { path: 'client/:id' }, function() {
+    this.route('reports', function() {
+      this.route('campaign', { path: 'campaign/:hash' }, function() {
+        this.route('creative-breakdown');
+        this.route('summary');
+      })
+    })
+    this.route('material-collect', function() {
+      this.route('campaign', { path: 'campaign/:hash'})
+      this.route('content', { path: 'content/:hash'})
+    })
+  })
   this.route('publisher', function() {
     this.route('create');
     this.route('edit', { path: ':id' });
-  })
-
-  this.route('reports', { path: '/reports/:hash' }, function() {
-    this.route('creative-breakdown');
-    this.route('campaign');
   })
 
   this.route('template', function() {

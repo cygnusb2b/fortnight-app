@@ -13,6 +13,7 @@
                 <div class="card-body">
                     <span class="h5 font-weight-bold text-uppercase text-danger">
                         Campaign
+                        {{log model}}
                     </span>
                     <span class="text-muted">
                         {{ model.campaignHash.advertiser.name }} | {{moment-format model.campaignHash.criteria.start "MM/DD/YYYY"}}{{#if model.campaignHash.criteria.end}}
