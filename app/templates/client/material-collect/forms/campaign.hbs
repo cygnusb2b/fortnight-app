@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label for="campaign-url">URL</label>
+      {{input
+        type="url"
+        value=form.model.url
+        class="form-control"
+        id="campaign-url"
+        placeholder="https://www.domain.com..."
+        focusOut=(action form.actions.autosave)
+      }}
+      <div class="invalid-feedback">
+        Please provide a valid URL.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        {{#each model.creatives as |creative|}}
+          <div class="mb-3 col-12 col-md-6 col-lg-4">
+            {{campaign-creative-client
+              creativeId=creative.id
+              campaignId=model.id
+              title=creative.title
+              teaser=creative.teaser
+              status=creative.status
+              image=creative.image
+            }}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>

@@ -6,7 +6,7 @@ import query from 'fortnight/gql/queries/reports/campaign-creative-breakdown';
 export default Route.extend(RouteQueryManager, {
 
   model() {
-    const { hash } = this.modelFor('reports');
+    const { hash } = this.modelFor('client.reports.campaign');
     const variables = { input: { hash } };
     return this.apollo.watchQuery({ query, variables });
   },

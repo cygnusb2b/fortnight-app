@@ -39,6 +39,18 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
+  this.route('client', { path: 'client/:id' }, function() {
+    this.route('reports', function() {
+      this.route('campaign', { path: 'campaign/:hash' }, function() {
+        this.route('creative-breakdown');
+        this.route('summary');
+      })
+    })
+    this.route('material-collect', function() {
+      this.route('campaign', { path: 'campaign/:hash'})
+      this.route('content', { path: 'content/:hash'})
+    })
+  })
   this.route('publisher', function() {
     this.route('create');
     this.route('edit', { path: ':id' });
@@ -49,11 +61,6 @@ Router.map(function() {
     this.route('edit', { path: ':id' }, function() {
       this.route('primary-image');
     });
-  })
-
-  this.route('reports', { path: '/reports/:hash' }, function() {
-    this.route('creative-breakdown');
-    this.route('campaign');
   })
 
   this.route('template', function() {
