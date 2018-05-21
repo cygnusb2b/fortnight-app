@@ -47,7 +47,6 @@ Router.map(function() {
       })
     })
     this.route('material-collect', function() {
-      this.route('campaign', { path: 'campaign/:hash'})
       this.route('content', { path: 'content/:hash'})
     })
   })
