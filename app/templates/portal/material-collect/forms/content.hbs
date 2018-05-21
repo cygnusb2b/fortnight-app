@@ -29,9 +29,12 @@
 
 <div class="row">
   <div class="col">
+    {{log form.model.image}}
     {{#image-uploader
       isLoading=isActionRunning
       onUploadStart=(action (mut form.model.image null))
+      minWidth=1920
+      minHeight=600
       onUploadSuccess=(action form.actions.setAndAutosave "image") as |uploader|
     }}
       <div class="form-group">
@@ -59,6 +62,13 @@
     {{/image-uploader}}
   </div>
 </div>
+{{#if form.model.image}}
+  <div class="row mb-3">
+    <div class="col">
+      <img class="img-fluid" src="{{form.model.image.src}}" />
+    </div>
+  </div>
+{{/if}}
 
 <div class="row">
   <div class="col">
@@ -69,8 +79,18 @@
         class="form-control"
         id="teaser"
         placeholder="A brief teaser of this content..."
-        focusOut=(action form.actions.autosave)
       }}
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    {{froala-editor
+      heightMin=500
+      content=form.model.body
+      update=(action (mut form.model.body))
+      focusOut=(action form.actions.autosave)
+    }}
   </div>
 </div>

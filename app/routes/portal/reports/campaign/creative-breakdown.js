@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
 import RouteQueryManager from 'ember-apollo-client/mixins/route-query-manager';
 
-import query from 'fortnight/gql/queries/reports/campaign-summary';
+import query from 'fortnight/gql/queries/reports/campaign-creative-breakdown';
 
 export default Route.extend(RouteQueryManager, {
 
   model() {
-    const { hash } = this.modelFor('client.reports.campaign');
+    const { hash } = this.modelFor('portal.reports.campaign');
     const variables = { input: { hash } };
     return this.apollo.watchQuery({ query, variables });
   },
