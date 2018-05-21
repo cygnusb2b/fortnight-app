@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'fortnight',
     environment,
-    rootURL: '/app',
+    rootURL: '/manage',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
