@@ -6,7 +6,6 @@ import query from 'fortnight/gql/queries/advertiser';
 
 export default Route.extend(AuthenticatedRouteMixin, RouteQueryManager, {
   model({ id }) {
-    console.log('model', id);
     const variables = { input: { id } };
     return this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'network-only' }, 'advertiser');
   },
