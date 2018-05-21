@@ -44,7 +44,7 @@ Router.map(function() {
     this.route('content')
   })
 
-  this.route('client', { path: 'client/:id' }, function() {
+  this.route('portal', { path: 'portal/:id' }, function() {
     this.route('reports', function() {
       this.route('campaign', { path: 'campaign/:hash' }, function() {
         this.route('creative-breakdown');
