@@ -39,11 +39,6 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
-  this.route('material-collect', { path:'/material-collect/:hash' },  function() {
-    this.route('campaign')
-    this.route('content')
-  })
-
   this.route('portal', { path: 'portal/:id' }, function() {
     this.route('reports', function() {
       this.route('campaign', { path: 'campaign/:hash' }, function() {
