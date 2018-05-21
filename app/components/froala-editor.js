@@ -1,5 +1,4 @@
 import FroalaEditorComponent from 'ember-froala-editor/components/froala-editor';
-import $ from 'jquery';
 
 export default FroalaEditorComponent.extend({
 options: null,
@@ -59,7 +58,7 @@ init() {
       ],
     };
     this.set('options', options);
-  };
+  }
   this._super(...arguments);
 }
 
