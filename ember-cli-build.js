@@ -41,6 +41,7 @@ module.exports = function(defaults) {
         // 'code_view',
         // 'paragraph_style',
       ],
+      themes: 'gray',
     }
   });
 
