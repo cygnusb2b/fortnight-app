@@ -5,8 +5,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import query from 'fortnight/gql/queries/advertiser';
 
 export default Route.extend(AuthenticatedRouteMixin, RouteQueryManager, {
-  model({ id }) {
-    const variables = { input: { id } };
+  model({ advertiser_id }) {
+    const variables = { input: { id: advertiser_id } };
     return this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'network-only' }, 'advertiser');
   },
 });

@@ -39,15 +39,15 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
-  this.route('portal', { path: 'portal/:id' }, function() {
-    this.route('reports', function() {
-      this.route('campaign', { path: 'campaign/:hash' }, function() {
+  this.route('portal', { path: 'portal/:advertiser_id' }, function() {
+    this.route('campaigns', { path: 'campaigns/:hash' }, function() {
+      this.route('reports', function() {
         this.route('creative-breakdown');
         this.route('summary');
       })
-    })
-    this.route('material-collect', function() {
-      this.route('content', { path: 'content/:hash'})
+      this.route('material-collect', function() {
+        this.route('content')
+      })
     })
   })
 
