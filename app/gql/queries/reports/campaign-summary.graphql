@@ -1,33 +1,11 @@
+#import 'fortnight/gql/fragments/reports/campaign-hash'
+#import 'fortnight/gql/fragments/reports/campaign-summary'
+
 query ReportCampaignSummary($input: CampaignHashInput!) {
 	campaignHash(input: $input) {
-    id
-    name
-    description
-    hash
-    advertiser {
-      id
-      name
-			logo
-    }
-    criteria {
-      id
-      placements {
-        id
-        publisher {
-          id
-          logo
-        }
-      }
-    }
+    ...CampaignHashFragment
 	}
 	reportCampaignSummary(input: $input) {
-		views
-		clicks
-		days {
-			date
-			views
-			clicks
-      ctr
-		}
-	}
+		...CampaignSummaryFragment
+  }
 }
