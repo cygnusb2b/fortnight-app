@@ -5,7 +5,7 @@ import query from 'fortnight/gql/queries/reports/campaign-summary';
 
 export default Route.extend(RouteQueryManager, {
   model() {
-    const { hash } = this.modelFor('portal.reports.campaign');
+    const { hash } = this.modelFor('portal.campaigns');
     const variables = { input: { hash } };
     return this.apollo.watchQuery({ query, variables });
   },
