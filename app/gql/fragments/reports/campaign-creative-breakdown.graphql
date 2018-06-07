@@ -1,0 +1,10 @@
+#import 'fortnight/gql/fragments/reports/creative-summary'
+
+fragment CampaignCreativeBreakdownFragment on CampaignCreativeBreakdown {
+  views
+  clicks
+  ctr
+  creatives {
+    ...CreativeSummaryFragment
+  }
+}

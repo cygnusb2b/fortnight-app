@@ -1,0 +1,7 @@
+#import 'fortnight/gql/fragments/campaign-hash'
+
+query campaignHash($input: CampaignHashInput!) {
+  campaignHash(input: $input) {
+    ...CampaignHashFragment
+  }
+}

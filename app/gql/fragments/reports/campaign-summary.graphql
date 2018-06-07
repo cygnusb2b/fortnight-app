@@ -1,0 +1,10 @@
+#import 'fortnight/gql/fragments/reports/day-summary'
+
+fragment CampaignSummaryFragment on CampaignSummary {
+  views
+  clicks
+  ctr
+  days {
+    ...DaySummaryFragment
+  }
+}

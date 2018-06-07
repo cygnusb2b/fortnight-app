@@ -1,0 +1,40 @@
+fragment CampaignHashFragment on Campaign {
+  hash
+  id
+  name
+  description
+  advertiser {
+    id
+    name
+    logo
+  }
+  criteria {
+    id
+    start
+    end
+    placements {
+      publisher {
+        logo
+      }
+    }
+  }
+  url
+  creatives {
+    id
+    title
+    teaser
+    image {
+      id
+      filePath
+      fileSize
+      mimeType
+      height
+      width
+      src
+      focalPoint {
+        x
+        y
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+#import 'fortnight/gql/fragments/reports/campaign-hash'
+#import 'fortnight/gql/fragments/reports/campaign-summary'
+
+query ReportCampaignSummary($input: CampaignHashInput!) {
+	campaignHash(input: $input) {
+    ...CampaignHashFragment
+	}
+	reportCampaignSummary(input: $input) {
+		...CampaignSummaryFragment
+  }
+}

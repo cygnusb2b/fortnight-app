@@ -12,11 +12,46 @@ module.exports = function(defaults) {
       tabSize: 2,
       useWrapMode: false,
     },
+
+    // Add options here
+    'ember-froala-editor': {
+      plugins: [
+        'lists',
+        'link',
+        'image',
+        'align',
+        'embedly',
+        'emoticons',
+        'fullscreen',
+        'image',
+        'link',
+        'video',
+        'print',
+        'quote',
+        'special_characters',
+        'paragraph_format',
+        'help',
+
+        // Not in use right now.
+
+        // 'font_family',
+        // 'font_size',
+        // 'inline_style',
+        // 'file',
+        // 'code_view',
+        // 'paragraph_style',
+      ],
+      themes: 'gray',
+    }
   });
 
   // Bootstrap JS and source maps.
   app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js');
   app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map', { destDir: 'assets' });
+
+  // High Charts
+  app.import('node_modules/highcharts/highcharts.js');
+  app.import('node_modules/highcharts/modules/exporting.js');
 
   app.import('node_modules/fraction.js/fraction.min.js', {
     using: [

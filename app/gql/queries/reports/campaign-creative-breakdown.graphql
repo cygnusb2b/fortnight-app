@@ -1,0 +1,11 @@
+#import 'fortnight/gql/fragments/reports/campaign-hash'
+#import 'fortnight/gql/fragments/reports/campaign-creative-breakdown'
+
+query reportCampaignCreativeBreakdown($input: CampaignHashInput!) {
+  campaignHash(input: $input) {
+    ...CampaignHashFragment
+  }
+  reportCampaignCreativeBreakdown(input: $input) {
+    ...CampaignCreativeBreakdownFragment
+  }
+}
