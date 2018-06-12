@@ -77,10 +77,18 @@
 <div class="row">
   <div class="col">
     {{froala-editor
-      heightMin=500
-      content=form.model.body
-      update=(action (mut form.model.body))
-      focusOut=(action form.actions.autosave)
-    }}
+        content=form.model.body
+        on-blur=(action form.actions.autosave)
+        update=(action (mut form.model.body))
+        options=(hash
+          height=500
+          paragraphFormat=(hash
+            N="Normal"
+            H2="Heading"
+            H3="Subheading"
+          )
+          paragraphFormatSelection=true
+        )
+      }}
   </div>
 </div>
