@@ -1,64 +1,25 @@
 <div class="row">
   <div class="col">
-    <div class="form-group">
-      <label for="campaign-title">Title {{required-field-label}}</label>
-      {{input
-        type="text"
-        required=true
-        value=form.model.title
-        class="form-control"
-        id="campaign-title"
-        placeholder="Title"
-        focusOut=(action form.actions.autosave)
-      }}
-      <div class="invalid-feedback">
-        Please provide a campaign title.
-      </div>
-    </div>
+    {{partial "story/fields/title"}}
   </div>
 </div>
 
 <div class="row">
-  <div class="col">
-    {{#image-uploader
-      isLoading=isActionRunning
-      onUploadStart=(action (mut form.model.image null))
-      minWidth=1920
-      minHeight=600
-      onUploadSuccess=(action form.actions.setAndAutosave "image") as |uploader|
-    }}
-      <div class="form-group">
-        <label for="creative-image">Upload Image {{required-field-label}}</label>
-        <div class="custom-file">
-          {{input-file
-            id="creative-image"
-            class="custom-file-input"
-            required=(if form.model.image false true)
-            accept=uploader.accept
-            disabled=isActionRunning
-            on-files-changed=(action uploader.actions.upload)
-          }}
-          <label class="custom-file-label" for="customFile">Choose file</label>
-          <div class="invalid-feedback">
-            Please select an image for upload.
-          </div>
-        </div>
-      </div>
-      {{#if uploader.error}}
-        <div class="alert alert-danger mt-3 mb-0" role="alert">
-          <strong>Oh Snap!</strong> {{uploader.error.message}}
-        </div>
-      {{/if}}
-    {{/image-uploader}}
+  <div class="col-lg-6">
+    {{partial "story/fields/advertiser"}}
   </div>
-</div>
-{{#if form.model.image}}
-  <div class="row mb-3">
-    <div class="col">
-      <img class="img-fluid" src="{{form.model.image.src}}" />
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label for="start">Published Date</label>
+      {{story-published-at
+        publishedAt=form.model.publishedAt
+        onSelect=(action form.actions.setAndAutosave "publishedAt")
+      }}
     </div>
   </div>
-{{/if}}
+</div>
+
+<hr>
 
 <div class="row">
   <div class="col">
