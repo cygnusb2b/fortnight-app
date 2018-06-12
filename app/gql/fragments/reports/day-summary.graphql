@@ -1,0 +1,6 @@
+fragment DaySummaryFragment on DaySummary {
+  views
+  clicks
+  ctr
+  date
+}

@@ -39,6 +39,18 @@ Router.map(function() {
     this.route('edit', { path: ':id' });
   })
 
+  this.route('portal', { path: 'portal/:advertiser_id' }, function() {
+    this.route('campaigns', { path: 'campaigns/:hash' }, function() {
+      this.route('reports', function() {
+        this.route('creative-breakdown');
+        this.route('summary');
+      })
+      this.route('material-collect', function() {
+        this.route('story')
+      })
+    })
+  })
+
   this.route('publisher', function() {
     this.route('create');
     this.route('edit', { path: ':id' });

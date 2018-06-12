@@ -1,0 +1,9 @@
+{{#nav-breadcrumbs as |crumbs|}}
+  {{#crumbs.item tagName="h4" classNames="test text-uppercase"}}{{entypo-icon "news"}} {{model.name}} Reports{{/crumbs.item}}
+{{/nav-breadcrumbs}}
+
+
+<ul>
+  <li>{{#link-to "portal.campaigns.reports.summary"}}Summary{{/link-to}}</li>
+  <li>{{#link-to "portal.campaigns.reports.creative-breakdown"}}Creative Breakdown{{/link-to}}</li>
+</ul>

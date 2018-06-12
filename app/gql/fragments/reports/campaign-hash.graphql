@@ -1,0 +1,21 @@
+fragment CampaignHashFragment on Campaign {
+  id
+  name
+  description
+  hash
+  advertiser {
+    id
+    name
+    logo
+  }
+  criteria {
+    id
+    placements {
+      id
+      publisher {
+        id
+        logo
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<div class="row my-3">
+  <div class="col">
+    <h3 class="mb-0 font-weight-bold text-muted">
+      <span class="text-uppercase">Content Builder</span>
+      <span class="h6 text-muted">Please design and submit your creative.</span>
+    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="card model-form">
+      {{#model-form
+        model=model
+        shouldAutosave=true
+        onSubmit=(action "update") as |form|
+      }}
+        <div class="card-body">
+          {{ partial "portal/campaigns/material-collect/forms/story" }}
+        </div>
+
+        <div class="card-footer">
+          {{model-save-button disabled=isActionRunning}}
+        </div>
+      {{/model-form}}
+
+    </div>
+  </div>
+</div>

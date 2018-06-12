@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col">
+    {{partial "story/fields/title"}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    {{partial "story/fields/advertiser"}}
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label for="start">Published Date</label>
+      {{story-published-at
+        publishedAt=form.model.publishedAt
+        onSelect=(action form.actions.setAndAutosave "publishedAt")
+      }}
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label for="teaser">Teaser</label>
+      {{textarea
+        value=form.model.teaser
+        class="form-control"
+        id="teaser"
+        placeholder="A brief teaser of this content..."
+      }}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    {{froala-editor
+        content=form.model.body
+        on-blur=(action form.actions.autosave)
+        update=(action (mut form.model.body))
+        options=(hash
+          height=500
+          paragraphFormat=(hash
+            N="Normal"
+            H2="Heading"
+            H3="Subheading"
+          )
+          paragraphFormatSelection=true
+        )
+      }}
+  </div>
+</div>

@@ -92,3 +92,34 @@ form .progress {
 .mnh-100 {
   min-height: 100%;
 }
+
+// Creative Preview
+.preview h3 {
+  font-size: 20px;
+}
+
+.list.preview h3 {
+  font-size: 14px;
+}
+
+.preview p {
+  font-size: 12px;
+}
+
+// Reports changes
+.highcharts-credits {
+  display: none !important;
+}
+
+.icon-50pxh .entypo {
+  font-size:50px
+}
+
+.icon-100pxh .entypo {
+  font-size:100px
+}
+
+.filter-grayscale {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
