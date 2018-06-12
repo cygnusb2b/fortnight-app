@@ -46,7 +46,7 @@ Router.map(function() {
         this.route('summary');
       })
       this.route('material-collect', function() {
-        this.route('content')
+        this.route('story')
       })
     })
   })
