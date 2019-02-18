@@ -1,0 +1,33 @@
+query ReportingList($input: ReportQueryInput!) {
+  report(input: $input) {
+    rows {
+      publisher {
+        id
+        name
+      }
+      topic {
+        id
+        name
+      }
+      placement {
+        id
+        name
+      }
+      advertiser {
+        id
+        name
+      }
+      campaign {
+        id
+        name
+      }
+      creative {
+        id
+        title
+      }
+      impressions
+      clicks
+      ctr
+    }
+  }
+}
