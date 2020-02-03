@@ -66,9 +66,9 @@ const build = async () => {
   await docker(['image', 'rm', imageTag]);
 };
 
-const deploy = async ({ key, value, image: img, namespace }) => {
-  log(`Deploying ${image}:${version} on Kubernertes`, { key, value, img, namespace });
-  const { status } = await spawnSync('npx', ['@endeavorb2b/rancher2cli', 'dl', key, value, img, namespace]);
+const deploy = async ({ key, value, image: img }) => {
+  log(`Deploying ${image}:${version} on Kubernertes`);
+  const { status } = await spawnSync('npx', ['@endeavorb2b/rancher2cli', 'dl', key, value, img, 'native-x']);
   if (status !== 0) error('Image deploy failed!');
 };
 
@@ -90,7 +90,6 @@ const main = async () => { // eslint-disable-line consistent-return
     key: 'basecms-service',
     value: name,
     image: `${image}:${version}`,
-    namespace: 'native-x',
   });
   log('  Deploy complete.\n');
 };
