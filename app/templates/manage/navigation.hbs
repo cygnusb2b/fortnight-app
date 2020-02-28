@@ -10,6 +10,12 @@
           {{/link-to}}
         {{/link-to}}
 
+        {{#link-to "manage.reports" tagName="li" class="nav-item"}}
+          {{#link-to "manage.reports" class="nav-link" title="Reports"}}
+            {{report/-icon}} <span class="d-none d-md-inline">Reports</span>
+          {{/link-to}}
+        {{/link-to}}
+
         {{#link-to "manage.campaign" tagName="li" class="nav-item"}}
           {{#link-to "manage.campaign" class="nav-link" title="Manage Campaigns"}}
             {{entypo-icon "calendar"}} <span class="d-none d-md-inline">Campaigns</span>
@@ -44,5 +50,3 @@
 
   {{loading-progress class="bg-dark"}}
 </div>
-
-
