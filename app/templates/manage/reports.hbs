@@ -1,0 +1,153 @@
+{{#nav-breadcrumbs as |crumbs|}}
+  {{#crumbs.item active=true}}{{report/-icon}} Reports{{/crumbs.item}}
+{{/nav-breadcrumbs}}
+
+<div class="row">
+  <div class="col">
+    <div class="card">
+
+      <div class="card-header text-right">
+        {{report/date-selector
+          disabled=isActionRunning
+          range=(hash start=start end=end)
+          onchange=(action "setDates")
+        }}
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          {{report/model-filter
+            disabled=isActionRunning
+            modelName="publishers"
+            label="Publishers"
+            value=publishers
+          }}
+          {{report/model-filter
+            disabled=isActionRunning
+            modelName="topics"
+            label="Topics"
+            value=topics
+          }}
+          {{report/model-filter
+            disabled=isActionRunning
+            modelName="placements"
+            label="Placements"
+            value=placements
+          }}
+          {{report/model-filter
+            disabled=isActionRunning
+            modelName="advertisers"
+            label="Advertisers"
+            value=advertisers
+          }}
+          {{report/model-filter
+            disabled=isActionRunning
+            modelName="campaigns"
+            label="Campaigns"
+            value=campaigns
+          }}
+        </div>
+      </div>
+
+      <div class="card-footer d-flex justify-content-end">
+        {{confirm-button
+          icon="warning"
+          label="Reset"
+          runningLabel="Resetting..."
+          class="btn-warning"
+          disabled=isActionRunning
+          onConfirm=(action "reset")
+        }}
+        <button
+          type="submit"
+          class="btn btn-success ml-1"
+          disabled={{isActionRunning}}
+          {{action "update"}}
+        >
+          {{entypo-icon "controller-play"}} Execute
+        </button>
+      </div>
+
+      <div class="card-body">
+
+        <div class="table-responsive mt-3">
+          <table class="table table-hover table-sm">
+            <thead>
+              <tr>
+                <th>Publisher</th>
+                <th>Topic</th>
+                <th>Placement</th>
+                <th>Advertiser</th>
+                <th>Campaign</th>
+                <th>Creative</th>
+                <th>Impressions</th>
+                <th>Clicks</th>
+                <th>CTR</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each model.rows as |item|}}
+                <tr>
+                  <td>
+                    {{#link-to "manage.publishers.edit" item.publisher.id}}
+                      {{item.publisher.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to "manage.topics.edit" item.topic.id}}
+                      {{item.topic.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to "manage.placements.edit" item.placement.id}}
+                      {{item.placement.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to "manage.advertisers.edit" item.advertiser.id}}
+                      {{item.advertiser.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to "manage.campaigns.edit" item.campaign.id}}
+                      {{item.campaign.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to
+                      "manage.campaigns.edit.creatives.edit.index"
+                      item.campaign.id
+                      item.creative.id
+                    }}
+                      {{item.creative.title}}
+                    {{/link-to}}
+                  </td>
+                  <td title="Total Views: {{item.impressions}}">{{number-format item.impressions "0a"}}</td>
+                  <td title="Total Clicks: {{item.clicks}}">{{number-format item.clicks "0a"}}</td>
+                  <td title={{item.ctr}}>{{number-format item.ctr "0.00%"}}</td>
+                </tr>
+              {{else}}
+                <tr><td class="text-muted">No results</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card-footer d-flex justify-content-end">
+        <form action="/reporting" method="post">
+          <input type="hidden" name="input" value={{downloadInput}}>
+          <button
+            type="submit"
+            class="btn btn-success"
+            disabled={{isActionRunning}}
+            title="Download Results"
+          >
+            {{entypo-icon "download"}} Download
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
